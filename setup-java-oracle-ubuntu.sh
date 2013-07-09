@@ -7,22 +7,15 @@
 # <http://creativecommons.org/licenses/by-sa/3.0/>
 # -------------------------------------------------------------------------------------------
 
-cd ~
+
 sudo mkdir -p /usr/lib/jvm
 cd ~/
 sudo mv jdk-7u21-linux-i586.tar.gz /usr/lib/jvm
-sudo mv jre-7u21-linux-i586.tar.gz /usr/lib/jvm
 cd /usr/lib/jvm
 sudo tar zxvf jdk-7u21-linux-i586.tar.gz
-sudo tar zxvf jre-7u21-linux-i586.tar.gz
-sudo rm jdk-7u21-linux-i586.tar.gz
-sudo rm jre-7u21-linux-i586.tar.gz
+sudo rm -rf jdk-7u21-linux-i586.tar.gz
 sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.7.0_21/bin/javac" 1
-sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jre1.7.0_21/bin/javac" 1
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.7.0_21/bin/java" 1
 sudo update-alternatives --set "javac" "/usr/lib/jvm/jdk1.7.0_21/bin/javac"
-sudo update-alternatives --set "javac" "/usr/lib/jvm/jre1.7.0_21/bin/javac"
-sudo echo "JAVA_HOME=/usr/lib/jvm/jdk1.7.0_21" >> /etc/profile
-sudo echo "PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile
-sudo echo "export JAVA_HOME" >> /etc/profile
-sudo echo "export PATH" >> /etc/profile
-. /etc/profile
+sudo update-alternatives --set "java" "/usr/lib/jvm/jdk1.7.0_21/bin/java"
+sudo gedit /etc/profile
